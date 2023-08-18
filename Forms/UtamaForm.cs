@@ -16,6 +16,7 @@ namespace sekolahku_jude
         public UtamaForm()
         {
             InitializeComponent();
+            Controls.OfType<MdiClient>().FirstOrDefault().BackColor = Color.White;
         }
 
         private void ribbonButton3_Click(object sender, EventArgs e)
@@ -29,6 +30,22 @@ namespace sekolahku_jude
         private void ribbonButton4_MouseDown(object sender, MouseEventArgs e)
         {
             var form = new MapelForm();
+            form.StartPosition = FormStartPosition.CenterScreen;
+            form.MdiParent = this;
+            form.Show();
+        }
+
+        private void ribbonButton4_Click(object sender, EventArgs e)
+        {
+            var form = new MapelForm();
+            form.StartPosition = FormStartPosition.CenterScreen;
+            form.MdiParent = this;
+            form.Show();
+        }
+
+        private void ribbonButton1_Click(object sender, EventArgs e)
+        {
+            var form = new KelasForm();
             form.StartPosition = FormStartPosition.CenterScreen;
             form.MdiParent = this;
             form.Show();
