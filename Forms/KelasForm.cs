@@ -134,5 +134,11 @@ namespace sekolahku_jude.Forms
             }
 
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            RefreshGrid();
+            ClearForm();
+        }
     }
 }

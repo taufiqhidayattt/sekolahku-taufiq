@@ -112,5 +112,10 @@ namespace sekolahku_jude.DataAkses
                 return conn.Read<GuruModel>(sql);
             }
         }
+
+        public static implicit operator GuruDal(SiswaDal v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

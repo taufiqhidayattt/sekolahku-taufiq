@@ -88,6 +88,7 @@
     <Compile Include="DataAkses\GuruDal.cs" />
     <Compile Include="DataAkses\KelasDal.cs" />
     <Compile Include="DataAkses\MapelDal.cs" />
+    <Compile Include="DataAkses\SiswaDal.cs" />
     <Compile Include="Forms\BrowseData.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -100,17 +101,23 @@
     <Compile Include="Forms\GuruForm.Designer.cs">
       <DependentUpon>GuruForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Kelas.cs">
+    <Compile Include="Forms\KelasForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Kelas.Designer.cs">
-      <DependentUpon>Kelas.cs</DependentUpon>
+    <Compile Include="Forms\KelasForm.Designer.cs">
+      <DependentUpon>KelasForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Mapel.cs">
+    <Compile Include="Forms\MapelForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Mapel.Designer.cs">
-      <DependentUpon>Mapel.cs</DependentUpon>
+    <Compile Include="Forms\MapelForm.Designer.cs">
+      <DependentUpon>MapelForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SiswaForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SiswaForm.Designer.cs">
+      <DependentUpon>SiswaForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\UtamaForm.cs">
       <SubType>Form</SubType>
@@ -121,6 +128,7 @@
     <Compile Include="Model\GuruModel.cs" />
     <Compile Include="Model\KelasModel.cs" />
     <Compile Include="Model\MapelModel.cs" />
+    <Compile Include="Model\SiswaModel.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Forms\BrowseData.resx">
@@ -129,11 +137,14 @@
     <EmbeddedResource Include="Forms\GuruForm.resx">
       <DependentUpon>GuruForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Kelas.resx">
-      <DependentUpon>Kelas.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\KelasForm.resx">
+      <DependentUpon>KelasForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Mapel.resx">
-      <DependentUpon>Mapel.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\MapelForm.resx">
+      <DependentUpon>MapelForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SiswaForm.resx">
+      <DependentUpon>SiswaForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\UtamaForm.resx">
       <DependentUpon>UtamaForm.cs</DependentUpon>
@@ -192,6 +203,7 @@
   <ItemGroup>
     <Content Include="ScriptTable\Kelas.sql" />
     <Content Include="ScriptTable\Mapel.sql" />
+    <Content Include="ScriptTable\Siswa.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

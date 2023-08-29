@@ -50,5 +50,13 @@ namespace sekolahku_jude
             form.MdiParent = this;
             form.Show();
         }
+
+        private void ribbonButton2_Click(object sender, EventArgs e)
+        {
+            var form = new SiswaForm();
+            form.StartPosition = FormStartPosition.CenterScreen;
+            form.MdiParent = this;
+            form.Show();
+        }
     }
 }
