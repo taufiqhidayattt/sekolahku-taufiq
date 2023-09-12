@@ -48,6 +48,8 @@ namespace sekolahku_jude.Forms
             // 
             // panel1
             // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BackColor = System.Drawing.Color.LightBlue;
             this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.textBox4);
@@ -59,14 +61,14 @@ namespace sekolahku_jude.Forms
             this.panel1.Controls.Add(this.label1);
             this.panel1.Location = new System.Drawing.Point(291, 12);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(259, 397);
+            this.panel1.Size = new System.Drawing.Size(245, 397);
             this.panel1.TabIndex = 12;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(208, 109);
+            this.button1.Location = new System.Drawing.Point(188, 109);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(37, 23);
+            this.button1.Size = new System.Drawing.Size(37, 20);
             this.button1.TabIndex = 7;
             this.button1.Text = "...";
             this.button1.UseVisualStyleBackColor = true;
@@ -77,14 +79,14 @@ namespace sekolahku_jude.Forms
             this.textBox4.Location = new System.Drawing.Point(16, 135);
             this.textBox4.Name = "textBox4";
             this.textBox4.ReadOnly = true;
-            this.textBox4.Size = new System.Drawing.Size(229, 20);
+            this.textBox4.Size = new System.Drawing.Size(213, 20);
             this.textBox4.TabIndex = 6;
             // 
             // textBox3
             // 
             this.textBox3.Location = new System.Drawing.Point(16, 109);
             this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(186, 20);
+            this.textBox3.Size = new System.Drawing.Size(166, 20);
             this.textBox3.TabIndex = 5;
             // 
             // label3
@@ -100,7 +102,7 @@ namespace sekolahku_jude.Forms
             // 
             this.textBox2.Location = new System.Drawing.Point(16, 70);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(229, 20);
+            this.textBox2.Size = new System.Drawing.Size(213, 20);
             this.textBox2.TabIndex = 3;
             // 
             // label2
@@ -116,7 +118,7 @@ namespace sekolahku_jude.Forms
             // 
             this.textBox1.Location = new System.Drawing.Point(16, 31);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(229, 20);
+            this.textBox1.Size = new System.Drawing.Size(213, 20);
             this.textBox1.TabIndex = 1;
             // 
             // label1
@@ -132,6 +134,9 @@ namespace sekolahku_jude.Forms
             // 
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(19, 12);
             this.dataGridView1.Name = "dataGridView1";
@@ -140,7 +145,8 @@ namespace sekolahku_jude.Forms
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(473, 415);
+            this.button4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.button4.Location = new System.Drawing.Point(459, 415);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(77, 23);
             this.button4.TabIndex = 15;
@@ -150,7 +156,8 @@ namespace sekolahku_jude.Forms
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(390, 415);
+            this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.button3.Location = new System.Drawing.Point(374, 415);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(77, 23);
             this.button3.TabIndex = 14;
@@ -160,7 +167,8 @@ namespace sekolahku_jude.Forms
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(307, 415);
+            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.button2.Location = new System.Drawing.Point(291, 415);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(77, 23);
             this.button2.TabIndex = 13;

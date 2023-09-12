@@ -20,7 +20,21 @@ namespace sekolahku_jude.Forms
             InitializeComponent();
             _guruDal = new GuruDal();
             ListDataGuru();
+
+            PhotoPic.DoubleClick += PhotoPic_DoubleClick;
+
+
         }
+
+        private void PhotoPic_DoubleClick(object sender, EventArgs e)
+        {
+            openFileDialog1.Filter = "JPEG Files (*.jpg)|*.jpg|All Files (*.*)|*.*"; ;
+            var filename = openFileDialog1.ShowDialog();
+            PhotoPic.SizeMode = PictureBoxSizeMode.StretchImage;
+            PhotoPic.Load(openFileDialog1.FileName);
+            label3.Text = openFileDialog1.FileName;
+        }
+
 
         private void ListDataGuru()
         {
@@ -84,7 +98,8 @@ namespace sekolahku_jude.Forms
             var guru = new GuruModel
             {
                 GuruId = textBox1.Text,
-                GuruName = textBox2.Text
+                GuruName = textBox2.Text,
+                Photo = label3.Text
             };
             var guruDb = _guruDal.GetData(guru.GuruId);
             if (guruDb is null)
@@ -94,20 +109,10 @@ namespace sekolahku_jude.Forms
 
             ClearForm();
             ListDataGuru();
-        }
+            }
 
-        private void dataGridView1_CellEnter(object sender, DataGridViewCellEventArgs e)
-        {
-            var grid = (DataGridView)sender;
-            if (grid.CurrentRow is null)
-                return;
-            var guruId = grid.CurrentRow.Cells["GuruId"].Value.ToString();
-            var guru = _guruDal.GetData(guruId);
-            if (guru is null)
-                return;
-            textBox1.Text = guru.GuruId;
-            textBox2.Text = guru.GuruName;
-        }
+      
+
 
         private void DeleteButton_Click(object sender, EventArgs e)
         {
@@ -123,6 +128,27 @@ namespace sekolahku_jude.Forms
 
             ClearForm();
             ListDataGuru();
+        }
+
+        private void dataGridView1_DoubleClick(object sender, EventArgs e)
+        {
+            var grid = (DataGridView)sender;
+            if (grid.CurrentRow is null)
+                return;
+            var guruId = grid.CurrentRow.Cells["GuruId"].Value.ToString();
+            var guru = _guruDal.GetData(guruId);
+            if (guru is null)
+                return;
+            textBox1.Text = guru.GuruId;
+            textBox2.Text = guru.GuruName;
+            label3.Text = guru.Photo;
+            PhotoPic.SizeMode = PictureBoxSizeMode.StretchImage;
+            if (label3.Text != "")
+                PhotoPic.Load(label3.Text);
+
+            else
+                PhotoPic.Image = null;
+
         }
     }
 }

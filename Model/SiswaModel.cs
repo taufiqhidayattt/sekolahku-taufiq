@@ -11,9 +11,12 @@ namespace sekolahku_jude.Model
     {
         public string SiswaId { get; set; }
         public string SiswaName { get; set; }
-        public string TglLahir { get; set; }
+        public DateTime TglLahir { get; set; }
         public string Alamat { get; set; }
         public string Alamat2 { get; set; }
         public string Kota { get; set; }
+
+        public string Photo { get; set; }
+
     }
 }

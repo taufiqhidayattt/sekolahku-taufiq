@@ -24,8 +24,8 @@ namespace sekolahku_jude.DataAkses
         {
             //  QUERY
             const string sql = @"
-                INSERT INTO Siswa(SiswaId, SiswaName, TglLahir, Alamat, Alamat2, Kota)
-                VALUES (@SiswaId, @SiswaName, @TglLahir, @Alamat, @Alamat2, @Kota)";
+                INSERT INTO Siswa(SiswaId, SiswaName, TglLahir, Alamat, Alamat2, Kota, Photo)
+                VALUES (@SiswaId, @SiswaName, @TglLahir, @Alamat, @Alamat2, @Kota, @Photo)";
 
             //  PARAM
             var dp = new DynamicParameters();
@@ -35,6 +35,8 @@ namespace sekolahku_jude.DataAkses
             dp.AddParam("@Alamat", model.Alamat, System.Data.SqlDbType.VarChar);
             dp.AddParam("@Alamat2", model.Alamat2, System.Data.SqlDbType.VarChar);
             dp.AddParam("@Kota", model.Kota, System.Data.SqlDbType.VarChar);
+            dp.AddParam("@Photo", model.Photo, System.Data.SqlDbType.VarChar);
+
             //  EXECUTE
             using (var conn = new SqlConnection(_connString))
             {
@@ -49,11 +51,12 @@ namespace sekolahku_jude.DataAkses
                 UPDATE
                     Siswa
                 SET
-                    SiswaName = @SiswaName
-                    TglLahir = @TglLahir
-                    Alamat = @Alamat
-                    Alamat2 = @Alamat2
-                    Kota = @Kota
+                    SiswaName = @SiswaName,
+                    TglLahir = @TglLahir,
+                    Alamat = @Alamat,
+                    Alamat2 = @Alamat2,
+                    Kota = @Kota,
+                    Photo = @Photo
 
                 WHERE
                     SiswaId = @SiswaId ";
@@ -66,6 +69,8 @@ namespace sekolahku_jude.DataAkses
             dp.AddParam("@Alamat", model.Alamat, System.Data.SqlDbType.VarChar);
             dp.AddParam("@Alamat2", model.Alamat2, System.Data.SqlDbType.VarChar);
             dp.AddParam("@Kota", model.Kota, System.Data.SqlDbType.VarChar);
+            dp.AddParam("@Photo", model.Photo, System.Data.SqlDbType.VarChar);
+
 
             //  EXECUTE
             using (var conn = new SqlConnection(_connString))
@@ -96,7 +101,7 @@ namespace sekolahku_jude.DataAkses
         {
             //  QUERY
             const string sql = @"
-                SELECT  SiswaId, SiswaName, TglLahir, Alamat, Alamat2, Kota
+                SELECT  SiswaId, SiswaName, TglLahir, Alamat, Alamat2, Kota, Photo
                 FROM    Siswa
                 WHERE   SiswaId = @SiswaId ";
 
@@ -115,7 +120,7 @@ namespace sekolahku_jude.DataAkses
         {
             //  QUERY
             const string sql = @"
-                SELECT  SiswaId, SiswaName, TglLahir, Alamat, Alamat2, Kota
+                SELECT  SiswaId, SiswaName, TglLahir, Alamat, Alamat2, Kota, Photo
                 FROM    Siswa ";
 
             //  EXECUTE

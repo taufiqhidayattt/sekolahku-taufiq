@@ -14,48 +14,37 @@ namespace sekolahku_jude.Forms
 {
     public partial class SiswaForm : Form
     {
-        private SiswaDal _siswaDal;
+        private readonly SiswaDal _siswaDal;
         public SiswaForm()
         {
             InitializeComponent();
             _siswaDal = new SiswaDal();
-            ListDataSiswa();
+
+            RefreshGrid();
+            PhotoPic.DoubleClick += PhotoPic_DoubleClick;
+            dataGridView1.CellDoubleClick += dataGridView1_CellDoubleClick;
         }
 
-        private void ListDataSiswa()
+      
+        private void PhotoPic_DoubleClick(object sender, EventArgs e)
         {
-            var listSiswa = _siswaDal.ListData()?.ToList();
+            openFileDialog1.Filter = "JPEG Files (*.jpg)|*.jpg|All Files (*.*)|*.*"; ;
+            var filename = openFileDialog1.ShowDialog();
+
+            PhotoPic.SizeMode = PictureBoxSizeMode.StretchImage;
+            PhotoPic.Load(openFileDialog1.FileName);
+            label7.Text = openFileDialog1.FileName;
+        }
+
+        private void RefreshGrid()
+        {
+            var list = _siswaDal.ListData()?.ToList() ?? new List<SiswaModel>();
             var binding = new BindingSource();
-            binding.DataSource = listSiswa;
+            binding.DataSource = list;
             dataGridView1.DataSource = binding;
         }
 
-        private void dataGridView1_RowEnter(object sender, DataGridViewCellEventArgs e)
-        {
-            //var grid = (DataGridView)sender;
-            //if (grid.CurrentRow is null)
-            //    return;
-            //var guruId = grid.CurrentRow.Cells["GuruId"].Value.ToString();
-            //var guru = _guruDal.GetData(guruId);
-            //if (guru is null)
-            //    return;
-            //textBox1.Text = guru.GuruId;
-            //textBox2.Text = guru.GuruName;
-
-        }
-
-        private void NewButton_Click(object sender, EventArgs e)
-        {
-            ClearForm();
-        }
-
-        private void ClearForm()
-        {
-            textBox1.Text = string.Empty;
-            textBox2.Text = string.Empty;
-        }
-
-        private void SaveButton_Click(object sender, EventArgs e)
+        private void buttonSave_Click(object sender, EventArgs e)
         {
             if (textBox1.Text == string.Empty)
             {
@@ -68,21 +57,18 @@ namespace sekolahku_jude.Forms
                 MessageBox.Show("Nama Siswa tidak boleh kosong");
                 return;
             }
-           
+
             if (textBox4.Text == string.Empty)
             {
                 MessageBox.Show("Alamat Siswa tidak boleh kosong");
                 return;
             }
-           
+
             if (textBox6.Text == string.Empty)
             {
                 MessageBox.Show("Kota Siswa tidak boleh kosong");
                 return;
             }
-
-
-
 
             if (textBox1.Text.Length > 3)
             {
@@ -94,59 +80,90 @@ namespace sekolahku_jude.Forms
                 MessageBox.Show("Nama Siswa maximal 30 huruf");
                 return;
             }
-           
+
             if (textBox4.Text.Length > 30)
             {
                 MessageBox.Show("Alamat Siswa maximal 30 huruf");
                 return;
             }
-           
+
             if (textBox6.Text.Length > 30)
             {
                 MessageBox.Show("Kota Siswa maximal 30 huruf");
                 return;
             }
 
+            var Siswa = new SiswaModel();
+            Siswa.SiswaId = textBox1.Text;
+            Siswa.SiswaName = textBox2.Text;
+            Siswa.Alamat = textBox4.Text;
+            Siswa.TglLahir = dateTimePicker1.Value;
+            Siswa.Alamat2 = textBox5.Text;
+            Siswa.Kota = textBox6.Text;
+            Siswa.Photo = label7.Text;
 
-            var siswa = new SiswaModel
-            {
-                SiswaId = textBox1.Text,
-                SiswaName = textBox2.Text,
-                TglLahir = dateTimePicker1.Text,
-                Alamat = textBox4.Text,
-                Alamat2 = textBox5.Text,
-                Kota = textBox6.Text
-            };
-            var siswaDb = _siswaDal.GetData(siswa.SiswaId);
-            if (siswaDb is null)
-                _siswaDal.Insert(siswa);
+            var db = _siswaDal.GetData(textBox1.Text);
+            if (db is null)
+                _siswaDal.Insert(Siswa);
             else
-                _siswaDal.Update(siswa);
-
-            ClearForm();
-            ListDataSiswa();
+                _siswaDal.Update(Siswa);
+            clearform();
+            RefreshGrid();
+        }
+        private void clearform()
+        {
+            textBox1.Text = string.Empty;
+            textBox2.Text = string.Empty;
+            dateTimePicker1.Value = DateTime.Now;
+            textBox4.Text = string.Empty;
+            textBox5.Text = string.Empty;
+            textBox6.Text = string.Empty;
+            PhotoPic.Image = null;
         }
 
-        private void dataGridView1_CellEnter(object sender, DataGridViewCellEventArgs e)
+        private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            var grid = (DataGridView)sender;
-            if (grid.CurrentRow is null)
+            if (e.RowIndex < 0)
                 return;
-            var siswaId = grid.CurrentRow.Cells["SiswaId"].Value.ToString();
-            var siswa = _siswaDal.GetData(siswaId);
+            var siswaid = dataGridView1.Rows[e.RowIndex].Cells["SiswaId"].Value.ToString();
+            var siswa = _siswaDal.GetData(siswaid);
+            if (siswa is null)
+                return;
+            showdata(siswa);
+
+            label7.Text = siswa.Photo;
+            PhotoPic.SizeMode = PictureBoxSizeMode.StretchImage;
+            if (label7.Text != "")
+            {
+                try
+                {
+                    PhotoPic.Load(label7.Text);
+                }
+                catch (Exception)
+                {
+
+                    PhotoPic.Image = null;
+                }
+
+            }
+            else
+                PhotoPic.Image = null;
+        }
+
+        private void showdata(SiswaModel siswa)
+        {
             if (siswa is null)
                 return;
             textBox1.Text = siswa.SiswaId;
             textBox2.Text = siswa.SiswaName;
-            dateTimePicker1.Text = siswa.TglLahir;
+            dateTimePicker1.Value = siswa.TglLahir;
             textBox4.Text = siswa.Alamat;
             textBox5.Text = siswa.Alamat2;
             textBox6.Text = siswa.Kota;
-
-
+            label7.Text = siswa.Photo;
         }
 
-        private void DeleteButton_Click(object sender, EventArgs e)
+        private void buttonDelete_Click(object sender, EventArgs e)
         {
             if (dataGridView1.CurrentRow is null)
                 return;
@@ -158,8 +175,9 @@ namespace sekolahku_jude.Forms
             if (MessageBox.Show($"Hapus data {siswa.SiswaName}?", "Delete", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 _siswaDal.Delete(siswa.SiswaId);
 
-            ClearForm();
-            ListDataSiswa();
+            clearform();
+            RefreshGrid();
         }
+
     }
 }
