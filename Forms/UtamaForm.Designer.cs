@@ -32,13 +32,13 @@
             this.ribbon1 = new System.Windows.Forms.Ribbon();
             this.ribbonTab1 = new System.Windows.Forms.RibbonTab();
             this.ribbonPanel1 = new System.Windows.Forms.RibbonPanel();
-            this.ribbonTab3 = new System.Windows.Forms.RibbonTab();
-            this.ribbonTab2 = new System.Windows.Forms.RibbonTab();
             this.ribbonButton3 = new System.Windows.Forms.RibbonButton();
             this.ribbonButton1 = new System.Windows.Forms.RibbonButton();
             this.ribbonButton2 = new System.Windows.Forms.RibbonButton();
             this.ribbonButton4 = new System.Windows.Forms.RibbonButton();
             this.Jadwal = new System.Windows.Forms.RibbonButton();
+            this.ribbonTab3 = new System.Windows.Forms.RibbonTab();
+            this.ribbonTab2 = new System.Windows.Forms.RibbonTab();
             this.SuspendLayout();
             // 
             // ribbon1
@@ -79,16 +79,6 @@
             this.ribbonPanel1.Name = "ribbonPanel1";
             this.ribbonPanel1.Text = "Master";
             // 
-            // ribbonTab3
-            // 
-            this.ribbonTab3.Name = "ribbonTab3";
-            this.ribbonTab3.Text = "ribbonTab3";
-            // 
-            // ribbonTab2
-            // 
-            this.ribbonTab2.Name = "ribbonTab2";
-            this.ribbonTab2.Text = null;
-            // 
             // ribbonButton3
             // 
             this.ribbonButton3.Image = global::sekolahku_jude.Properties.Resources.icons8_teacher_48;
@@ -124,15 +114,25 @@
             this.ribbonButton4.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbonButton4.SmallImage")));
             this.ribbonButton4.Text = "Mapel";
             this.ribbonButton4.Click += new System.EventHandler(this.ribbonButton4_Click_1);
-            this.ribbonButton4.MouseDown += new System.Windows.Forms.MouseEventHandler(this.ribbonButton4_MouseDown);
             // 
             // Jadwal
             // 
             this.Jadwal.Image = global::sekolahku_jude.Properties.Resources.jadwal;
             this.Jadwal.LargeImage = global::sekolahku_jude.Properties.Resources.jadwal;
             this.Jadwal.Name = "Jadwal";
+            this.Jadwal.SmallImage = ((System.Drawing.Image)(resources.GetObject("Jadwal.SmallImage")));
             this.Jadwal.Text = "Jadwal";
             this.Jadwal.Click += new System.EventHandler(this.Jadwal_Click);
+            // 
+            // ribbonTab3
+            // 
+            this.ribbonTab3.Name = "ribbonTab3";
+            this.ribbonTab3.Text = "ribbonTab3";
+            // 
+            // ribbonTab2
+            // 
+            this.ribbonTab2.Name = "ribbonTab2";
+            this.ribbonTab2.Text = null;
             // 
             // UtamaForm
             // 
