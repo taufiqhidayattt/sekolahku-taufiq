@@ -95,10 +95,11 @@ namespace sekolahku_jude.Forms
             _listMapel.Clear();
             NilaiSiswaGrid.Refresh();
             LoadNilai();
+
         }
         #endregion
 
-        #region HEADER-JADWAL
+        #region HEADER-NILAI SISWA
         private void SiswaCombo_SelectedIndexChanged(object sender, EventArgs e)
         {
             _listMapel.Clear();

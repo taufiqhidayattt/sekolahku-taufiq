@@ -82,6 +82,7 @@ namespace sekolahku_jude.Forms
             this.KelasGrid.Name = "KelasGrid";
             this.KelasGrid.Size = new System.Drawing.Size(346, 443);
             this.KelasGrid.TabIndex = 1;
+            this.KelasGrid.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.KelasGrid_CellDoubleClick);
             // 
             // NilaiSiswaGrid
             // 
