@@ -1,7 +1,7 @@
 ﻿
 namespace sekolahku_jude.Forms
 {
-    partial class JadwalForm
+    partial class NilaiSiswaForm
     {
         /// <summary>
         /// Required designer variable.
@@ -31,13 +31,13 @@ namespace sekolahku_jude.Forms
         {
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.KelasGrid = new System.Windows.Forms.DataGridView();
-            this.JadwalGrid = new System.Windows.Forms.DataGridView();
+            this.NilaiSiswaGrid = new System.Windows.Forms.DataGridView();
             this.SaveButton = new System.Windows.Forms.Button();
             this.NewButton = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.KelasNameText = new System.Windows.Forms.TextBox();
             this.KelasIdText = new System.Windows.Forms.TextBox();
-            this.HariCombo = new System.Windows.Forms.ComboBox();
+            this.SiswaCombo = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -45,7 +45,7 @@ namespace sekolahku_jude.Forms
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.KelasGrid)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.JadwalGrid)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NilaiSiswaGrid)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -54,7 +54,7 @@ namespace sekolahku_jude.Forms
             this.splitContainer1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.splitContainer1.Location = new System.Drawing.Point(0, 1);
+            this.splitContainer1.Location = new System.Drawing.Point(1, 3);
             this.splitContainer1.Name = "splitContainer1";
             // 
             // splitContainer1.Panel1
@@ -63,13 +63,13 @@ namespace sekolahku_jude.Forms
             // 
             // splitContainer1.Panel2
             // 
-            this.splitContainer1.Panel2.Controls.Add(this.JadwalGrid);
+            this.splitContainer1.Panel2.Controls.Add(this.NilaiSiswaGrid);
             this.splitContainer1.Panel2.Controls.Add(this.SaveButton);
             this.splitContainer1.Panel2.Controls.Add(this.NewButton);
             this.splitContainer1.Panel2.Controls.Add(this.panel1);
             this.splitContainer1.Size = new System.Drawing.Size(814, 443);
             this.splitContainer1.SplitterDistance = 346;
-            this.splitContainer1.TabIndex = 6;
+            this.splitContainer1.TabIndex = 7;
             // 
             // KelasGrid
             // 
@@ -83,17 +83,17 @@ namespace sekolahku_jude.Forms
             this.KelasGrid.Size = new System.Drawing.Size(346, 443);
             this.KelasGrid.TabIndex = 1;
             // 
-            // JadwalGrid
+            // NilaiSiswaGrid
             // 
-            this.JadwalGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.NilaiSiswaGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.JadwalGrid.BackgroundColor = System.Drawing.Color.DarkSlateGray;
-            this.JadwalGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.JadwalGrid.Location = new System.Drawing.Point(0, 121);
-            this.JadwalGrid.Name = "JadwalGrid";
-            this.JadwalGrid.Size = new System.Drawing.Size(464, 293);
-            this.JadwalGrid.TabIndex = 8;
+            this.NilaiSiswaGrid.BackgroundColor = System.Drawing.Color.DarkSlateGray;
+            this.NilaiSiswaGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.NilaiSiswaGrid.Location = new System.Drawing.Point(0, 121);
+            this.NilaiSiswaGrid.Name = "NilaiSiswaGrid";
+            this.NilaiSiswaGrid.Size = new System.Drawing.Size(464, 293);
+            this.NilaiSiswaGrid.TabIndex = 8;
             // 
             // SaveButton
             // 
@@ -123,7 +123,7 @@ namespace sekolahku_jude.Forms
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.KelasNameText);
             this.panel1.Controls.Add(this.KelasIdText);
-            this.panel1.Controls.Add(this.HariCombo);
+            this.panel1.Controls.Add(this.SiswaCombo);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Location = new System.Drawing.Point(0, 0);
@@ -133,7 +133,7 @@ namespace sekolahku_jude.Forms
             // 
             // KelasNameText
             // 
-            this.KelasNameText.Location = new System.Drawing.Point(69, 42);
+            this.KelasNameText.Location = new System.Drawing.Point(117, 41);
             this.KelasNameText.Name = "KelasNameText";
             this.KelasNameText.ReadOnly = true;
             this.KelasNameText.Size = new System.Drawing.Size(121, 20);
@@ -141,54 +141,54 @@ namespace sekolahku_jude.Forms
             // 
             // KelasIdText
             // 
-            this.KelasIdText.Location = new System.Drawing.Point(69, 14);
+            this.KelasIdText.Location = new System.Drawing.Point(117, 12);
             this.KelasIdText.Name = "KelasIdText";
             this.KelasIdText.ReadOnly = true;
             this.KelasIdText.Size = new System.Drawing.Size(47, 20);
             this.KelasIdText.TabIndex = 4;
             // 
-            // HariCombo
+            // SiswaCombo
             // 
-            this.HariCombo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.HariCombo.FormattingEnabled = true;
-            this.HariCombo.Location = new System.Drawing.Point(69, 70);
-            this.HariCombo.Name = "HariCombo";
-            this.HariCombo.Size = new System.Drawing.Size(121, 21);
-            this.HariCombo.TabIndex = 3;
+            this.SiswaCombo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.SiswaCombo.FormattingEnabled = true;
+            this.SiswaCombo.Location = new System.Drawing.Point(117, 79);
+            this.SiswaCombo.Name = "SiswaCombo";
+            this.SiswaCombo.Size = new System.Drawing.Size(121, 21);
+            this.SiswaCombo.TabIndex = 3;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(35, 73);
+            this.label2.Location = new System.Drawing.Point(16, 82);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(26, 13);
+            this.label2.Size = new System.Drawing.Size(95, 13);
             this.label2.TabIndex = 2;
-            this.label2.Text = "Hari";
+            this.label2.Text = "Nama nama Siswa";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(16, 17);
+            this.label1.Location = new System.Drawing.Point(16, 15);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(47, 13);
             this.label1.TabIndex = 0;
             this.label1.Text = "Kelas ID";
             // 
-            // JadwalForm
+            // NilaiSiswaForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.CadetBlue;
             this.ClientSize = new System.Drawing.Size(817, 448);
             this.Controls.Add(this.splitContainer1);
-            this.Name = "JadwalForm";
-            this.Text = "JadwalForm";
+            this.Name = "NilaiSiswaForm";
+            this.Text = "NilaiSiswa";
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.KelasGrid)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.JadwalGrid)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NilaiSiswaGrid)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);
@@ -199,13 +199,13 @@ namespace sekolahku_jude.Forms
 
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.DataGridView KelasGrid;
-        private System.Windows.Forms.DataGridView JadwalGrid;
+        private System.Windows.Forms.DataGridView NilaiSiswaGrid;
         private System.Windows.Forms.Button SaveButton;
         private System.Windows.Forms.Button NewButton;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.TextBox KelasNameText;
         private System.Windows.Forms.TextBox KelasIdText;
-        private System.Windows.Forms.ComboBox HariCombo;
+        private System.Windows.Forms.ComboBox SiswaCombo;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
     }

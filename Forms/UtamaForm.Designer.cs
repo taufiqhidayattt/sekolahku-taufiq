@@ -32,13 +32,14 @@
             this.ribbon1 = new System.Windows.Forms.Ribbon();
             this.ribbonTab1 = new System.Windows.Forms.RibbonTab();
             this.ribbonPanel1 = new System.Windows.Forms.RibbonPanel();
+            this.ribbonTab3 = new System.Windows.Forms.RibbonTab();
+            this.ribbonTab2 = new System.Windows.Forms.RibbonTab();
             this.ribbonButton3 = new System.Windows.Forms.RibbonButton();
             this.ribbonButton1 = new System.Windows.Forms.RibbonButton();
             this.ribbonButton2 = new System.Windows.Forms.RibbonButton();
             this.ribbonButton4 = new System.Windows.Forms.RibbonButton();
             this.Jadwal = new System.Windows.Forms.RibbonButton();
-            this.ribbonTab3 = new System.Windows.Forms.RibbonTab();
-            this.ribbonTab2 = new System.Windows.Forms.RibbonTab();
+            this.NilaiSiswa = new System.Windows.Forms.RibbonButton();
             this.SuspendLayout();
             // 
             // ribbon1
@@ -76,8 +77,19 @@
             this.ribbonPanel1.Items.Add(this.ribbonButton2);
             this.ribbonPanel1.Items.Add(this.ribbonButton4);
             this.ribbonPanel1.Items.Add(this.Jadwal);
+            this.ribbonPanel1.Items.Add(this.NilaiSiswa);
             this.ribbonPanel1.Name = "ribbonPanel1";
             this.ribbonPanel1.Text = "Master";
+            // 
+            // ribbonTab3
+            // 
+            this.ribbonTab3.Name = "ribbonTab3";
+            this.ribbonTab3.Text = "ribbonTab3";
+            // 
+            // ribbonTab2
+            // 
+            this.ribbonTab2.Name = "ribbonTab2";
+            this.ribbonTab2.Text = null;
             // 
             // ribbonButton3
             // 
@@ -124,15 +136,14 @@
             this.Jadwal.Text = "Jadwal";
             this.Jadwal.Click += new System.EventHandler(this.Jadwal_Click);
             // 
-            // ribbonTab3
+            // NilaiSiswa
             // 
-            this.ribbonTab3.Name = "ribbonTab3";
-            this.ribbonTab3.Text = "ribbonTab3";
-            // 
-            // ribbonTab2
-            // 
-            this.ribbonTab2.Name = "ribbonTab2";
-            this.ribbonTab2.Text = null;
+            this.NilaiSiswa.Image = global::sekolahku_jude.Properties.Resources.icons8_categorize_321;
+            this.NilaiSiswa.LargeImage = global::sekolahku_jude.Properties.Resources.icons8_categorize_321;
+            this.NilaiSiswa.Name = "NilaiSiswa";
+            this.NilaiSiswa.SmallImage = ((System.Drawing.Image)(resources.GetObject("NilaiSiswa.SmallImage")));
+            this.NilaiSiswa.Text = "NilaiSiswa";
+            this.NilaiSiswa.Click += new System.EventHandler(this.NilaiSiswa_Click_1);
             // 
             // UtamaForm
             // 
@@ -163,6 +174,7 @@
         private System.Windows.Forms.RibbonButton ribbonButton3;
         private System.Windows.Forms.RibbonPanel ribbonPanel4;
         private System.Windows.Forms.RibbonButton Jadwal;
+        private System.Windows.Forms.RibbonButton NilaiSiswa;
     }
 }
 

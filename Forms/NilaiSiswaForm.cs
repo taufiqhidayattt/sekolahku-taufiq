@@ -12,36 +12,38 @@ using System.Windows.Forms;
 
 namespace sekolahku_jude.Forms
 {
-    public partial class JadwalForm : Form
+    public partial class NilaiSiswaForm : Form
     {
-        private readonly SiswaDal _SiswaDal;
-
-        private readonly KelasDal _kelasDal;
+        private readonly KelasDal _kelasDal;        
+        private readonly SiswaDal _siswaDal;
         private readonly MapelDal _mapelDal;
-        private readonly JadwalDal _jadwalDal;
+        private readonly NilaiSiswaDal _nilaisiswaDal;
 
-        private BindingList<JadwalMapelDto> _listMapel;
+        private BindingList<NilaiSiswaDto> _listMapel;
 
-        public JadwalForm()
+
+        public NilaiSiswaForm() 
         {
             InitializeComponent();
-            _kelasDal = new KelasDal();
+            _kelasDal = new KelasDal();            
+            _siswaDal = new SiswaDal();
             _mapelDal = new MapelDal();
-            _jadwalDal = new JadwalDal();
+            _nilaisiswaDal = new NilaiSiswaDal();
 
             InitKelasGrid();
-            InitJadwalGrid();
-            InitHariCombo();
+            IniNilaiSiswaGrid();
+            InitSiswaCombo();
             RegisterEventHandler();
         }
 
 
         private void RegisterEventHandler()
         {
-            KelasGrid.CellDoubleClick += KelasGrid_CellDoubleClick;
-            JadwalGrid.CellValidated += JadwalGrid_CellValidated;
+            KelasGrid.CellDoubleClick += KelasGrid_CellDoubleClick;            
+            SiswaCombo.SelectedIndexChanged += SiswaCombo_SelectedIndexChanged;
+
+            NilaiSiswaGrid.CellValidated += NilaiSiswaGrid_CellValidated;
             KelasIdText.Validated += KelasIdText_Validated;
-            HariCombo.SelectedIndexChanged += HariCombo_SelectedIndexChanged;
 
             SaveButton.Click += SaveButton_Click;
             NewButton.Click += NewButton_Click;
@@ -51,9 +53,9 @@ namespace sekolahku_jude.Forms
         {
             KelasIdText.Text = string.Empty;
             KelasNameText.Text = string.Empty;
-            HariCombo.SelectedIndex = 0;
+            SiswaCombo.SelectedIndex = 0;
             _listMapel.Clear();
-            LoadJawal();
+            LoadNilai();
 
         }
 
@@ -91,83 +93,82 @@ namespace sekolahku_jude.Forms
             KelasNameText.Text = kelasName;
 
             _listMapel.Clear();
-            JadwalGrid.Refresh();
-            LoadJawal();
+            NilaiSiswaGrid.Refresh();
+            LoadNilai();
         }
         #endregion
 
         #region HEADER-JADWAL
-        private void HariCombo_SelectedIndexChanged(object sender, EventArgs e)
+        private void SiswaCombo_SelectedIndexChanged(object sender, EventArgs e)
         {
             _listMapel.Clear();
-            JadwalGrid.Refresh();
-            LoadJawal();
+            NilaiSiswaGrid.Refresh();
+            LoadNilai();
         }
 
         private void KelasIdText_Validated(object sender, EventArgs e)
         {
             _listMapel.Clear();
-            JadwalGrid.Refresh();
-            LoadJawal();
+            NilaiSiswaGrid.Refresh();
+            LoadNilai();
         }
 
-        private void InitHariCombo()
+        private void InitSiswaCombo()
         {
-            var listHari = new List<string>
-            {
-                "Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu"
-            };
-            HariCombo.DataSource = listHari;
+
+            var listSiswa = _siswaDal.ListData();
+            SiswaCombo.DataSource = listSiswa;
+            SiswaCombo.DisplayMember = "SiswaName";
+            SiswaCombo.ValueMember = "SiswaId";
+
         }
 
-        private void LoadJawal()
+        private void LoadNilai()
         {
             var kelas = KelasIdText.Text;
-            var hari = HariCombo.SelectedItem.ToString();
+            var hari = SiswaCombo.SelectedItem.ToString();
 
-            var listMapel = _jadwalDal.ListData(kelas, hari);
+            var listMapel = _nilaisiswaDal.ListData(kelas, hari);
             if (listMapel is null)
                 return;
 
             foreach (var item in listMapel)
             {
-                _listMapel.Add(new JadwalMapelDto
+                _listMapel.Add(new NilaiSiswaDto
                 {
-                    JamMulai = item.JamMulai,
-                    JamSelesai = item.JamSelesai,
+                    SiswaId = item.SiswaId,
                     MapelId = item.MapelId,
                     MapelName = item.MapelName,
-                });
+                    Nilai =item.Nilai,
+                }) ;
             }
-            JadwalGrid.Refresh();
+            NilaiSiswaGrid.Refresh();
 
         }
         #endregion
 
         #region GRID-JADWAL
-        private void InitJadwalGrid()
+        private void IniNilaiSiswaGrid()
         {
-            _listMapel = new BindingList<JadwalMapelDto>();
+            _listMapel = new BindingList<NilaiSiswaDto>();
             var binding = new BindingSource();
             binding.DataSource = _listMapel;
-            JadwalGrid.DataSource = binding;
+            NilaiSiswaGrid.DataSource = binding;
 
-            JadwalGrid.Columns["JamMulai"].Width = 50;
-            JadwalGrid.Columns["JamMulai"].HeaderText = "Mulai";
+            NilaiSiswaGrid.Columns["MapelId"].Width = 50;
+            NilaiSiswaGrid.Columns["MapelId"].HeaderText = "Id Mapel";
+                 
+            NilaiSiswaGrid.Columns["MapelName"].Width = 150;
+            NilaiSiswaGrid.Columns["MapelName"].HeaderText = "Nama Mata Pelajaran";
+            NilaiSiswaGrid.Columns["MapelName"].ReadOnly = true;
+            NilaiSiswaGrid.Columns["MapelName"].DefaultCellStyle.BackColor = Color.Beige;
 
-            JadwalGrid.Columns["JamSelesai"].Width = 50;
-            JadwalGrid.Columns["JamSelesai"].HeaderText = "Selesai";
+            NilaiSiswaGrid.Columns["Nilai"].Width = 40;
+            NilaiSiswaGrid.Columns["Nilai"].HeaderText = "Nilai";
 
-            JadwalGrid.Columns["MapelId"].Width = 40;
-            JadwalGrid.Columns["MapelId"].HeaderText = "ID";
-
-            JadwalGrid.Columns["MapelName"].Width = 150;
-            JadwalGrid.Columns["MapelName"].HeaderText = "Nama Mata Pelajaran";
-            JadwalGrid.Columns["MapelName"].ReadOnly = true;
-            JadwalGrid.Columns["MapelName"].DefaultCellStyle.BackColor = Color.Beige;
         }
 
-        private void JadwalGrid_CellValidated(object sender, DataGridViewCellEventArgs e)
+        private void NilaiSiswaGrid_CellValidated(object sender, DataGridViewCellEventArgs e)
         {
             var grid = (DataGridView)sender;
             if (grid.CurrentCell.ColumnIndex == grid.Columns["MapelId"].Index)
@@ -177,7 +178,7 @@ namespace sekolahku_jude.Forms
                 if (mapel != null)
                 {
                     _listMapel[e.RowIndex].MapelName = mapel.MapelName;
-                    JadwalGrid.Refresh();
+                    NilaiSiswaGrid.Refresh();
                 }
             }
             else
@@ -189,31 +190,31 @@ namespace sekolahku_jude.Forms
         private void SaveButton_Click(object sender, EventArgs e)
         {
             var kelas = KelasIdText.Text;
-            var hari = HariCombo.SelectedItem.ToString();
+            var siswa = SiswaCombo.SelectedItem.ToString();
             if (KelasNameText.Text == string.Empty)
             {
                 MessageBox.Show("'KELAS ID' tidak benar");
                 return;
             }
-            if (HariCombo.Text == string.Empty)
+            if (SiswaCombo.Text == string.Empty)
             {
-                MessageBox.Show("'HARI' tidak benar");
+                MessageBox.Show("'Siswa' tidak benar");
                 return;
             }
 
 
-            _jadwalDal.Delete(kelas, hari);
+            _nilaisiswaDal.Delete(kelas, siswa);
             foreach (var item in _listMapel)
             {
-                var jadwal = new JadwalModel
+                var nilaiSiswa = new NilaiSiswa
+
                 {
                     KelasId = kelas,
-                    Hari = hari,
-                    JamMulai = item.JamMulai,
-                    JamSelesai = item.JamSelesai,
+                    SiswaId = siswa,
+                    Nilai = item.Nilai,
                     MapelId = item.MapelId,
                 };
-                _jadwalDal.Insert(jadwal);
+                _nilaisiswaDal.Insert(nilaiSiswa);
             }
             MessageBox.Show("Save berhasil");
 
@@ -221,12 +222,12 @@ namespace sekolahku_jude.Forms
         #endregion
     }
 
-    public class JadwalMapelDto
+    public class NilaiSiswaDto
     {
-        public string JamMulai { get; set; }
-        public string JamSelesai { get; set; }
+        public string SiswaId { get; set; }
         public string MapelId { get; set; }
         public string MapelName { get; set; }
+        public decimal Nilai { get; set; }
 
     }
 }

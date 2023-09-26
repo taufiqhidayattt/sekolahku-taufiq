@@ -68,5 +68,14 @@ namespace sekolahku_jude
             form.MdiParent = this;
             form.Show();
         }
+
+
+        private void NilaiSiswa_Click_1(object sender, EventArgs e)
+        {
+            var form = new NilaiSiswaForm();
+            form.StartPosition = FormStartPosition.CenterScreen;
+            form.MdiParent = this;
+            form.Show();
+        }
     }
 }

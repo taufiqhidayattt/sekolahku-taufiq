@@ -73,6 +73,16 @@ namespace sekolahku_jude.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icons8_categorize_321 {
+            get {
+                object obj = ResourceManager.GetObject("icons8_categorize_321", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_school_building_48 {
             get {
                 object obj = ResourceManager.GetObject("icons8_school_building_48", resourceCulture);
